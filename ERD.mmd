@@ -1,0 +1,42 @@
+erDiagram
+    CUSTOMERS ||--o{ ACCOUNTS : owns
+    BRANCHES ||--o{ ACCOUNTS : manages
+    ACCOUNTS ||--o{ TRANSACTIONS : records
+    CUSTOMERS ||--o{ LOANS : borrows
+    CUSTOMERS {
+      INT CustomerID PK
+      VARCHAR FirstName
+      VARCHAR LastName
+      VARCHAR Email UK
+      VARCHAR Phone
+      DATE AccountCreationDate
+      DATE DateOfBirth
+    }
+    BRANCHES {
+      INT BranchID PK
+      VARCHAR BranchName
+      VARCHAR BranchAddress
+      VARCHAR BranchPhone
+    }
+    ACCOUNTS {
+      INT AccountID PK
+      INT CustomerID FK
+      INT BranchID FK
+      VARCHAR AccountType
+      DECIMAL Balance
+    }
+    TRANSACTIONS {
+      INT TransactionID PK
+      INT AccountID FK
+      DATE TransactionDate
+      DECIMAL Amount
+      VARCHAR TransactionType
+    }
+    LOANS {
+      INT LoanID PK
+      INT CustomerID FK
+      DECIMAL LoanAmount
+      DECIMAL InterestRate
+      DATE StartDate
+      DATE EndDate
+    }
